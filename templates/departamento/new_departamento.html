@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Registrar Departamento{% endblock %}
+
+{% block content %}
+{% include "include/header.html" %}
+
+<div class="grid-container">
+    <h1>Registrar Departamento</h1>
+
+    <form method="post" class="grid-x grid-margin-x">
+    {% csrf_token %}
+
+    <div class="medium-6 cell">
+        <label>Departamento</label>
+        {{ form.nombre }}
+    </div>
+
+    <div class="medium-6 cell">
+        <label>Short name</label>
+        {{ form.short_name }}
+    </div>
+
+    <div class="cell">
+        <button type="submit" class="button success">
+            Guardar
+        </button>
+    </div>
+</form>
+
+</div>
+
+{% endblock %}

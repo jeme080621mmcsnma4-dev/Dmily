@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% include "include/header.html" %}
+
+<div class="grid-container">
+    <div class="grid-x align-center">
+        <div class="cell large-4 card">
+
+            <div class="card-divider">
+                {{ empleado.get_job_display }}
+            </div>
+
+            {% if empleado.avatar %}
+                <img src="{{ empleado.avatar.url }}">
+            {% else %}
+                <img src="{% static 'img/img4.jpg' %}">
+            {% endif %}
+
+            <div class="card-section">
+                <h4>{{ empleado.full_name }}</h4>
+                <p>{{ empleado.departamento }}</p>
+
+                <p><strong>Habilidades:</strong></p>
+                <ul>
+                    {% for h in empleado.habilidades.all %}
+                        <li>{{ h }}</li>
+                    {% empty %}
+                        <li>Sin habilidades</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
